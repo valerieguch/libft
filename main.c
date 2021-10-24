@@ -1,40 +1,48 @@
-#include<stdio.h>
-static int	ft_isspace(char c)
-{
-	if (c == '\t' || c == '\n' || c == '\v')
-		return (1);
-	else if (c == '\f' || c == '\r' || c == ' ')
-		return (1);
-	return (0);
-}
+#include <stdio.h>
+#include <stdlib.h>
+#include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_subsrt(char const *s, unsigned int start, size_t len)
 {
-	int	result;
-	int	sign;
+	char	*result;
+	int		dl;
 
-	result = 0;
-	sign = 1;
-	while (ft_isspace(*str))
-		str++;
-	if (*str == '-' || *str == '+')
+	dl = ft_strlen(&s[start]);
+	printf("dl: %d\n", dl);
+	if (dl < len)
+		len = dl;
+
+	printf("we will allocate %zd bytes\n", len + 1);
+	result = malloc(sizeof(char) * (len + 1));
+	if (!result)
+		return (NULL);
+	char *p = result;
+	// printf("%c\n", s[start]);
+	while (len && s[start])
 	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
+		*p = s[start];
+		p++;
+		start++;
+		len--;
 	}
-	while (*str >= '0' && *str <= '9')
-	{
-		result *= 10;
-		result += (*str - '0') * sign;
-		str++;
-	}
+	*p = '\0';
+
 	return (result);
 }
 
 int main(void)
 {
-char * stroka = " -12";
-int rez = ft_atoi(stroka);
-printf( "%d", rez);
+	char s[] = "he";
+	int start = 6;
+	int len = 5;
+
+	char *result = ft_subsrt(s, start, len);
+
+	int i = 0;
+	while (i < len + 1)
+	{
+		printf("%c ", result[i]);
+		i++;
 	}
+	puts("");
+}
