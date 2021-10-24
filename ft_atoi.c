@@ -31,10 +31,3 @@ int	ft_atoi(const char *str)
 	}
 	return (result);
 }
-
-int main(void)
-{
-char * stroka = " -12";
-int rez = ft_atoi(stroka);
-printf( "%d", rez);
-	}
