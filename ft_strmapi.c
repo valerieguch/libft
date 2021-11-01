@@ -1,20 +1,22 @@
-// int main(void)
-// {
-// 	char s[] = "hello world my name is lera";
+#include<stdlib.h>
+#include "libft.h"
+char * ft_strmapi ( char const *s,char (*f) ( unsigned int, char))
+{
+char *result;
+char *point;
+unsigned int i;
 
-// 	char *result = malloc(sizeof(char) * (ft_strlen(s) + 1));
+i = 0;
+result = ft_strdup(s);
+if(!result)
+   return( NULL);
+point = result;
+while(*point)
+{
+	*point = f(i, *point); // почему передаем указатель, а не символ
+	point++;
+	i++;
+}
 
-// 	unsigned int i = 0;
-// 	while (s[i])
-// 	{
-// 		result[i] = ft_toupper(s[i]);
-// 		i++;
-// 	}
-
-// 	puts(result);
-// }
-
-// 1) выделить память под новую строку
-// 1.1) если память не выделилась, вернуть NULL
-// 2) составить новую строку, при этом применяя к каждому
-//    символу функцию f. Она принимает индекс и символ
+return(result);
+}
