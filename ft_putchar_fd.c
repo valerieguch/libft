@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+#include <unistd.h>
+#include <fcntl.h>
+
+void	ft_putchar_fd(char c, int fd)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (c + 'a' - 'A');
-	return (c);
+	write(fd, &c, 1);
 }
