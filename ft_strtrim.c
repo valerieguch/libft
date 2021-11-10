@@ -1,7 +1,7 @@
-#include<stdlib.h>
+#include <stdlib.h>
 #include <stdio.h>
 
-static int ft_contain(char const *set, char c )
+static int	ft_in(char const *set, char c)
 {
 	if (!c)
 		return (0);
@@ -10,38 +10,38 @@ static int ft_contain(char const *set, char c )
 	return (*set == c);
 }
 
-static char * ft_dup ( char *s, size_t len  )
+static char	*ft_strndup_simple(const char *src, size_t len)
 {
-	char * result;
-	char * p;
-	result = malloc( sizeof(char) * (len + 1));
+	char	*result;
+	char	*p;
+
+	result = malloc(sizeof(char) * (len + 1));
 	if (!result)
 		return (NULL);
 	p = result;
-	while ( len)
+	while (len)
 	{
-		*p = *s;
+		*p = *src;
 		p++;
-		s++;
+		src++;
 		len--;
 	}
-	* p = '\0';
-	return ( result);
+	*p = '\0';
+	return (result);
 }
 
-char * ft_strtrim( char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*start;
+	char const	*start;
 
-	while (*s1 && ft_contain(set, *s1))
+	while (*s1 && ft_in(set, *s1))
 		s1++;
 	if (*s1 == '\0')
-		return (ft_dup("", 0));
-	start = (char *) s1;
+		return (ft_strndup_simple("", 0));
+	start = s1;
 	while (*s1)
 		s1++;
-	s1--;
-	while (ft_contain(set, *s1) && s1 > start)
+	while (ft_in(set, s1[-1]) && s1 > start)
 		s1--;
-	return ( ft_dup(start, s1 - start));
+	return (ft_strndup_simple(start, s1 - start));
 }

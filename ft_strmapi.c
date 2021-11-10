@@ -13,7 +13,7 @@ if(!result)
 point = result;
 while(*point)
 {
-	*point = f(i, *point); // почему передаем указатель, а не символ
+	*point = f(i, *point); 
 	point++;
 	i++;
 }
