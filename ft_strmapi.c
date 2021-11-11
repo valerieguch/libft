@@ -1,22 +1,34 @@
-#include<stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wat.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsteel   <gsteel@student.21-school.ru>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2000/01/01 20:20:20 by gsteel            #+#    #+#             */
+/*   Updated: 2000/01/01 20:20:20 by gsteel           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
 #include "libft.h"
-char * ft_strmapi ( char const *s,char (*f) ( unsigned int, char))
-{
-char *result;
-char *point;
-unsigned int i;
 
-i = 0;
-result = ft_strdup(s);
-if(!result)
-   return( NULL);
-point = result;
-while(*point)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	*point = f(i, *point); 
-	point++;
-	i++;
-}
+	char			*result;
+	char			*p;
+	unsigned int	i;
 
-return(result);
+	result = ft_strdup(s);
+	if (!result)
+		return (NULL);
+	i = 0;
+	p = result;
+	while (*p)
+	{
+		*p = f(i, *p);
+		p++;
+		i++;
+	}
+	return (result);
 }

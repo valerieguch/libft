@@ -12,9 +12,10 @@
 
 #include <stdlib.h>
 
-int ft_count(int n)
+int	ft_count(int n)
 {
-	int count;
+	int	count;
+
 	count = 0;
 	if (n == 0)
 		return (1);
@@ -26,15 +27,16 @@ int ft_count(int n)
 	return (count);
 }
 
-char * ft_itoa(int a)
+char	*ft_itoa(int a)
 {
-	int digits;
-	int i;
-	int negative;
-	char *result;
+	int		digits;
+	int		i;
+	int		negative;
+	char	*result;
+
 	digits = ft_count(a);
 	negative = (a < 0);
-	result = malloc(sizeof(char) * ( digits + negative + 1));
+	result = malloc(sizeof(char) * (digits + negative + 1));
 	if (!result)
 		return (NULL);
 	if (negative)
@@ -49,8 +51,6 @@ char * ft_itoa(int a)
 			result[i] = (a % 10) + '0';
 		a /= 10;
 		i--;
-
 	}
 	return (result);
-
 }

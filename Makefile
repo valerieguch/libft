@@ -1,6 +1,4 @@
 NAME	=	libft.a
-RUNNER	=	runner
-
 CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
 
@@ -11,7 +9,6 @@ S		=	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 			ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c \
 			ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c \
 			ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c \
-# 			main.c
 O		=	$(S:.c=.o)
 H		=	libft.h
 
@@ -23,10 +20,6 @@ all: $(NAME)
 
 $(NAME): $(O)
 	ar rcs $(NAME) $(O)
-
-# needs to have 'int main()' to be functional
-runner: $(O)
-	$(CC) $(CFLAGS) -o $(RUNNER) $(O)
 
 %.o: %.c $(H)
 	$(CC) $(CFLAGS) -c $< -o $(addsuffix .o, $(basename $<))

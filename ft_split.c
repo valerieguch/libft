@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wat.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsteel   <gsteel@student.21-school.ru>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2000/01/01 20:20:20 by gsteel            #+#    #+#             */
+/*   Updated: 2000/01/01 20:20:20 by gsteel           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "libft.h"
 
 #include <stdio.h> // TODO remove this
 
-static size_t ft_count( char const *s, char c)
+static size_t	ft_count(char const *s, char c)
 {
 	size_t	words;
 	char	light;
@@ -19,35 +31,33 @@ static size_t ft_count( char const *s, char c)
 			words++;
 			light = 1;
 		}
-		else if ( light && *s == c )
+		else if (light && *s == c)
 			light = 0;
 		s++;
 	}
 	return (words);
-
 }
-// char *s
-// s++;
-static void ft_put_word(char **p, char **s, char c)
-{
-	char *start;
-	size_t len;
 
-	while ( **s == c)
+static void	ft_put_word(char **p, char **s, char c)
+{
+	char	*start;
+	size_t	len;
+
+	while (**s == c)
 		(*s)++;
 	start = *s;
-	while (**s && **s != c) 
+	while (**s && **s != c)
 		(*s)++;
 	len = *s - start;
-	*p = malloc(sizeof(char) * (len + 1));
+	*p = malloc (sizeof(char) * (len + 1));
 	if (!*p)
 		return ;
 	ft_strlcpy(*p, start, len + 1);
 }
-// "hello" "world" NULL NULL NULL
-static void ft_free_all(char ** words)
+
+static void	ft_free_all(char **words)
 {
-	char **p;
+	char	**p;
 
 	p = words;
 	while (*p)
@@ -58,25 +68,23 @@ static void ft_free_all(char ** words)
 	free(words);
 }
 
-char ** ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	size_t word;
-	char **result;
-	char **p;
+	size_t	word;
+	char	**result;
+	char	**p;
 
 	word = ft_count(s, c);
 	result = ft_calloc(word + 1, sizeof(char *));
 	if (!result)
 		return (NULL);
 	p = result;
-
-	// hello world 
 	while (word)
 	{
-		ft_put_word(p, (char **) &s, c); //  "   hello   world  "
-		if (!*p) 
+		ft_put_word(p, (char **) &s, c);
+		if (!*p)
 		{
-			ft_free_all( result);
+			ft_free_all(result);
 			return (NULL);
 		}
 		p++;
@@ -84,10 +92,3 @@ char ** ft_split(char const *s, char c)
 	}
 	return (result);
 }
-
-// int main()
-// {
-// 	char s[] = "   hello  world  ";
-// 	printf("%d\n", (int) ft_count(s, '\0'));
-// 	return 0;
-// }

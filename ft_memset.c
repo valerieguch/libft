@@ -1,18 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wat.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsteel   <gsteel@student.21-school.ru>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2000/01/01 20:20:20 by gsteel            #+#    #+#             */
+/*   Updated: 2000/01/01 20:20:20 by gsteel           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-
-void *ft_memset(char *b, int c, size_t len)
+void	*ft_memset(char *b, int c, size_t len)
 {
-	char *p;
+	char	*p;
+
 	p = b;
 	c &= 0b11111111;
-	while(len)
+	while (len)
 	{
-      *p = c;
-      p++;
-      len--;
-
+		*p = c;
+		p++;
+		len--;
 	}
 	return (b);
-
 }

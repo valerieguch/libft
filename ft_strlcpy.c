@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wat.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsteel   <gsteel@student.21-school.ru>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2000/01/01 20:20:20 by gsteel            #+#    #+#             */
+/*   Updated: 2000/01/01 20:20:20 by gsteel           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "libft.h"
 
@@ -8,7 +20,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	if (dstsize == 0)
 		return (ft_strlen(src));
 	src_start = src;
-	while (*src && dstsize -1)
+	while (*src && dstsize - 1)
 	{
 		*dst = *src;
 		dst++;
